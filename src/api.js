@@ -10,3 +10,16 @@ export const getAllArtictles = (list) => {
       return articles;
     });
 };
+
+export const getSingleArticle = (article_id) => {
+  return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}`)
+    .then((response) => {
+      if (!response.ok) {
+        return Promise.reject("failed to fetch article");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.article;
+    });
+};

@@ -1,12 +1,13 @@
 import { getAllArtictles } from "../api";
 import { useEffect, useState } from "react";
+import "../App.css";
 function Home() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   console.log("rendering all articles");
   useEffect(() => {
-    console.log("useEffect fired");
+    console.log("all articles useEffect fired");
     setIsLoading(true);
     setIsError(null);
 
@@ -27,13 +28,13 @@ function Home() {
   }
   return (
     <>
-      <section className="articles-list">
-        <ul>
+      <section>
+        <ul className="articles-list">
           {allArticles.map((article) => {
-            console.log(article);
             return (
               <li
                 key={article.article_id}
+                article={article}
                 topic={article.topic}
                 title={article.title}
                 author={article.author}

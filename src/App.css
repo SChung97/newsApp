@@ -2,3 +2,11 @@
   text-decoration: none;
   color: black;
 }
+
+.articles-list {
+  list-style: none;
+}
+
+.article-card {
+  list-style: none;
+}
