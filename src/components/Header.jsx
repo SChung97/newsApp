@@ -1,7 +1,7 @@
-function Header({list}) {
+function Header({ list }) {
   return (
     <>
-      <section>
+      <section className="header">
         <h1>NC NEWS</h1>
         <h2>Home</h2>
         <h2>Topics</h2>
