@@ -25,7 +25,7 @@ console.log('rendering comments')
     return <p>Error loading comments</p>
  }
 
-console.log(allComments)
+
 return (
     <>
     <section>

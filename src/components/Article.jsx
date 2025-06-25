@@ -1,6 +1,7 @@
 import { getSingleArticle } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ArticleVotes from "./ArticleVotes";
 import "../App.css";
 import Comments from "./Comments";
 function Article() {
@@ -25,29 +26,29 @@ function Article() {
   if (isError) {
     return <p>Error loading article</p>;
   }
-  const articleArray = [article];
+
+  
   return (
     <>
       <section className="article-card">
-        {articleArray.map((singleArticle) => {
-          return (
-            <li key={singleArticle.article_id}>
-              <h3>{singleArticle.title}</h3>
-              <h4>{singleArticle.topic}</h4>
-              <p>Author: {singleArticle.author}</p>
-              <p>{singleArticle.created_at}</p>
+        
+            <li key={article.article_id}>
+              <h3>{article.title}</h3>
+              <h4>{article.topic}</h4>
+              <p>Author: {article.author}</p>
+              <p>{article.created_at}</p>
               <img
                 className="article_img"
-                src={singleArticle.article_img_url}
-                alt={singleArticle.title}
+                src={article.article_img_url}
+                alt={article.title}
               />
-              <p>{singleArticle.body}</p>
-              <p>Comment count: {singleArticle.comment_count}</p>
-              <Comments article_id={article_id}/>
-              <p>Votes: {singleArticle.votes}</p>
+              <p>{article.body}</p>
+              <ArticleVotes article_id={article_id} initialVotes={article.votes}/>
+              <p>Comment count: {article.comment_count}</p>
+              <Comments article_id={article_id} />
+              
             </li>
-          );
-        })}
+          
       </section>
     </>
   );

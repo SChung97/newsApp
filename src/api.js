@@ -38,3 +38,20 @@ export const getAllComments = (article_id) => {
   })
   
 }
+
+export const patchArticleVotes = (article_id, increment) => {
+  return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}`, {
+    method: 'PATCH',
+    headers: {'Content-type': 'application/json'}, body: JSON.stringify({inc_votes: increment})
+  })
+  .then((response) => {
+    if (!response.ok) {
+      return Promise.reject({status: response.status, msg: 'failed to update votes'})
+    }
+    return response.json()
+  })
+  .then((article) => {
+
+    return article.article.votes
+  })
+}
