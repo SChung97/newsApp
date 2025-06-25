@@ -23,3 +23,18 @@ export const getSingleArticle = (article_id) => {
       return data.article;
     });
 };
+
+export const getAllComments = (article_id) => {
+  return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}/comments`)
+  .then((response) => {
+    if (!response.ok) {
+      return Promise.reject('failed to fetch comments')
+    }
+    return response.json()
+  })
+  .then((data) => {
+
+    return data.comments
+  })
+  
+}
