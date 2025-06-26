@@ -18,6 +18,8 @@ function Article() {
 
 console.log('rendering comments')
   console.log("rendering article");
+  const currentUser = 'tickle122'
+
   useEffect(() => {
     console.log("single article useEffect fired");
     setIsLoading(true);
@@ -41,6 +43,7 @@ console.log('rendering comments')
  
      getAllComments(article_id).then((comments) => {
      console.log('api call comments success')
+     console.log('fetched comments data')
          setComments(comments)
          setLoadingComments(false)
      })
@@ -87,7 +90,7 @@ console.log('rendering comments')
               <p>{article.body}</p>
               <ArticleVotes article_id={article.article_id} initialVotes={article.votes}/>
               <p>Comment count: {article.comment_count}</p>
-              <Comments comments={comments} loadingComments={loadingComments} commentsError={commentsError} />
+              <Comments comments={comments} currentUser={currentUser} loadingComments={loadingComments} commentsError={commentsError} setComments={setComments}/>
               <button onClick={handleCommentForm}>{showCommentsForm ? 'Hide' : 'Add your thoughts here!'}</button>
               {showCommentsForm && (<AddComment article_id={article.article_id} onNewComment={handleNewComment}/>)}
               

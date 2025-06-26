@@ -81,7 +81,7 @@ export const deleteComment = (comment_id) => {
   })
   .then((response) => {
     if (!response.ok)
-   { return Promise,reject({status: response.status, msg: 'failed to delete comment'})}
+   { return Promise.reject({status: response.status, msg: 'failed to delete comment'})}
     return
   })
   .catch((error) => {
