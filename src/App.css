@@ -3,6 +3,11 @@
   color: black;
 }
 
+.link-to-topics {
+  text-decoration: none;
+  color: black;
+}
+
 .articles-list {
   list-style: none;
 }
@@ -12,5 +17,9 @@
 }
 
 .comments-list {
+  list-style: none;
+}
+
+.topics-list {
   list-style: none;
 }

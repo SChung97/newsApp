@@ -9,7 +9,7 @@ function Header({ list }) {
             NC NEWS
           </Link>
         </h1>
-        <h2>Topics</h2>
+        <h2><Link to='/topics' className='link-to-topics'>Topics</Link></h2>
       </header>
     </>
   );

@@ -1,4 +1,4 @@
-export const getAllArtictles = (list) => {
+export const getAllArtictles = () => {
   return fetch(`https://nc-news-zgkw.onrender.com/api/articles`)
     .then((response) => {
       if (!response.ok) {
@@ -37,6 +37,20 @@ export const getAllComments = (article_id) => {
     return data.comments
   })
   
+}
+
+export const getAllTopics = () => {
+  return fetch('https://nc-news-zgkw.onrender.com/api/topics')
+  .then((response) => {
+    if (!response.ok) {
+      return Promise.reject('failed to fetch all topics')
+    }
+    return response.json()
+  })
+  .then(({topics}) => {
+    console.log(topics)
+    return topics
+  })
 }
 
 export const patchArticleVotes = (article_id, increment) => {
@@ -89,3 +103,5 @@ export const deleteComment = (comment_id) => {
     return Promise.reject(error)
   })
   }
+
+  

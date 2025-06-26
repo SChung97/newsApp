@@ -26,7 +26,6 @@ function CommentCard({comment, currentUser, deleteSuccess}) {
         setIsDeleting(false)
         setDeleteError(error.msg || 'Cannot delete comment at this time, please try again!')
     })}
-    
     if (isHidden) {
         return <p>Comment removed</p>
     }
