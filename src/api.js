@@ -55,3 +55,19 @@ export const patchArticleVotes = (article_id, increment) => {
     return article.article.votes
   })
 }
+
+export const makeComment = (article_id, username, body) => {
+  return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}/comments`, {
+    method: 'POST',
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify({username: username, body: body})
+  })
+.then((response) => {
+  if (!response.ok) {
+    return Promise.reject({status: response.status, msg: 'failed to post new comment'})
+  }
+  return response.json()
+})
+.then((data) => 
+{return data.comment})
+}

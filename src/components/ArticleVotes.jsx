@@ -1,9 +1,9 @@
 
 import { patchArticleVotes } from "../api"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 function ArticleVotes({article_id, initialVotes}) {
-console.log(article_id)
+
 const [votes, setVotes] = useState(initialVotes)
 const [error, setError] = useState(null)
 const [userVote, setUserVote] = useState(0)
