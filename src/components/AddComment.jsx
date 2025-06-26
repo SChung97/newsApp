@@ -3,7 +3,7 @@ import { makeComment } from "../api"
 import { useState } from "react"
 
 function AddComment({article_id, onNewComment}) {
-    const [username] = useState('tickle122')
+    const [username] = useState('jessjelly')
     const [commentBody, setCommentBody] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState(null)

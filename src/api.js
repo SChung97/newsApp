@@ -70,4 +70,8 @@ export const makeComment = (article_id, username, body) => {
 })
 .then((data) => 
 {return data.comment})
+.catch((error)=> {
+  console.error('error in makeComment api call')
+  return Promise.reject(error)
+})
 }
