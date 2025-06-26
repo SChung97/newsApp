@@ -12,7 +12,7 @@
   list-style: none;
 }
 
-.article-link {
+.article-title-link {
   text-decoration: none;
   color: black;
 }
@@ -35,6 +35,15 @@
 }
 
 .topic-link {
+  text-decoration: none;
+  color: black;
+}
+
+.article-topic-link {
+  text-decoration: none;
+  color: black;
+}
+.home-topic-link {
   text-decoration: none;
   color: black;
 }

@@ -1,4 +1,4 @@
-export const getAllArtictles = () => {
+export const getAllArticles = () => {
   return fetch(`https://nc-news-zgkw.onrender.com/api/articles`)
     .then((response) => {
       if (!response.ok) {

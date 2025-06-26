@@ -1,12 +1,14 @@
 import { getSingleArticle, getAllComments } from "../api";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 import ArticleVotes from "./ArticleVotes";
 import "../App.css";
 import Comments from "./Comments";
 import AddComment from "./AddComment";
+import { TopicContext } from "./context/TopicContext";
 
 function Article() {
+  const {handleTopic} = useContext(TopicContext)
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([])
@@ -63,6 +65,10 @@ console.log('rendering comments')
     setShowCommentsForm((currentValue) => !currentValue)
   }
 
+  const handleArticleTopicClick = (slug) => {
+    handleTopic(slug)
+  }
+
   if (isLoading) {
     return <p>Loading article</p>;
   }
@@ -79,7 +85,7 @@ console.log('rendering comments')
         
             <ul key={article.article_id}>
               <h3>{article.title}</h3>
-              <h4>{article.topic}</h4>
+              <h4><Link to='/' onClick={() => handleArticleTopicClick(article.topic)} className="article-topic-link">{article.topic}</Link></h4>
               <p>Author: {article.author}</p>
               <p>{article.created_at}</p>
               <img

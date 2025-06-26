@@ -1,23 +1,28 @@
-import { getAllArtictles } from "../api";
+import { getAllArticles } from "../api";
 import { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { TopicContext} from '../components/context/TopicContext'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 
 function Home() {
-  const {selectedTopic} = useContext(TopicContext)
+  const {selectedTopic, handleTopic} = useContext(TopicContext)
+
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   console.log("rendering all articles");
+
+  const topicFromUrl = searchParams.get('topic')
+
   useEffect(() => {
     console.log("all articles useEffect fired");
     setIsLoading(true);
     setIsError(null);
 
-    getAllArtictles()
+    getAllArticles()
       .then((articleList) => {
         setAllArticles(articleList);
         setIsLoading(false);
@@ -26,6 +31,18 @@ function Home() {
         console.error("Error fetching articles", err);
       });
   }, []);
+
+  useEffect(() => {
+    if (topicFromUrl && topicFromUrl !== selectedTopic) {
+      handleTopic(topicFromUrl)
+    } else if (!selectedTopic && topicFromUrl) {
+      handleTopic({topic: selectedTopic})
+    } else if 
+      (!selectedTopic && !topicFromUrl) {
+        setSearchParams({})
+      }
+    }, [selectedTopic, topicFromUrl, handleTopic, setSearchParams])
+  
 
 const filteredArticles = selectedTopic ? allArticles.filter(article => article.topic === selectedTopic) : allArticles
 
@@ -42,17 +59,17 @@ const filteredArticles = selectedTopic ? allArticles.filter(article => article.t
   return (
     <>
       <section>
-        {selectedTopic && `Articles about ${selectedTopic}`}
+        {selectedTopic && <h2>Articles about {selectedTopic}</h2>}
         <ul className="articles-list">
           {filteredArticles.map((article) => {
             return (
               <li
                 key={article.article_id}
                 className="article-list-item">
-                <Link to={`/articles/${article.article_id}`} className='article-link'>
+                <Link to={`/articles/${article.article_id}`} className='article-title-link'>
                 <h3>{article.title}</h3>
                 </Link>
-                <p>{article.topic}</p>
+                <p><Link to={`/?topic=${article.topic}`} onClick={() => handleTopic(article.topic)}className='home-topic-link' >{article.topic} </Link></p>
                 
                 <p>{article.author}</p>
                 <img
