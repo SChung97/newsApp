@@ -70,8 +70,22 @@ export const makeComment = (article_id, username, body) => {
 })
 .then((data) => 
 {return data.comment})
-.catch((error)=> {
-  console.error('error in makeComment api call')
-  return Promise.reject(error)
-})
-}
+
+
+};
+
+export const deleteComment = (comment_id) => {
+  return fetch(`https://nc-news-zgkw.onrender.com/api/comments/${comment_id}`, {
+    method: 'DELETE'
+    
+  })
+  .then((response) => {
+    if (!response.ok)
+   { return Promise,reject({status: response.status, msg: 'failed to delete comment'})}
+    return
+  })
+  .catch((error) => {
+    console.error('error in deleteComment api call', error)
+    return Promise.reject(error)
+  })
+  }

@@ -38,8 +38,8 @@ return (
     <>
     <section className="article-votes-container">
         <p>Votes: {votes}</p>
-        <button className='votes-button' onClick={() => handleVote(1)}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</button>
-        <button className="votes-button" onClick={() => handleVote(-1)}>
+        <button className='votes-button' onClick={() => handleVote(1)} disabled={userVote === -1}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</button>
+        <button className="votes-button" onClick={() => handleVote(-1)} disabled={userVote === 1}>
             {userVote === -1 ? 'Downvoted' : 'Downvote'}
         </button>
     </section>

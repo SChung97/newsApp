@@ -3,10 +3,10 @@ import { makeComment } from "../api"
 import { useState } from "react"
 
 function AddComment({article_id, onNewComment}) {
-    const [username] = useState('jessjelly')
+    const [username] = useState('tickle122')
     const [commentBody, setCommentBody] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [error, setError] = useState(null)
+    const [submissionError, setSubmissionError] = useState(null)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -14,10 +14,10 @@ function AddComment({article_id, onNewComment}) {
             setError('Cannot post an empty comment, please try again!')
             return 
         }
-        setError(null)
+        setSubmissionError(null)
         setIsSubmitting(true)
         
-        makeComment(article_id, commentBody, username).then((newComment) => {
+        makeComment(article_id, username, commentBody).then((newComment) => {
             setCommentBody('')
             setIsSubmitting(false)
             if(onNewComment) {
@@ -26,7 +26,7 @@ function AddComment({article_id, onNewComment}) {
         }).catch((error) => {
             console.error('Comment can\'t be posted at this time', error)
             setIsSubmitting(false)
-            setError('Failed to post comment, please, try again')
+            setSubmissionError(error.msg || 'Failed to post comment, please, try again')
         })
     }
     return (
@@ -37,7 +37,7 @@ function AddComment({article_id, onNewComment}) {
                 placeholder="Type here..." required disabled={isSubmitting}></textarea>
             
             <button type='submit' disabled={isSubmitting}>Submit</button>
-            {error && <p className="Error-message">{error}</p>}
+            {submissionError && <p className="Error-message">{submissionError}</p>}
             </form>
         </section>
     )
