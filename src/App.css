@@ -12,6 +12,11 @@
   list-style: none;
 }
 
+.article-link {
+  text-decoration: none;
+  color: black;
+}
+
 .article-page {
   list-style: none;
 }
@@ -22,4 +27,14 @@
 
 .topics-list {
   list-style: none;
+}
+
+.active-link {
+  text-decoration: none;
+  color: black;
+}
+
+.topic-link {
+  text-decoration: none;
+  color: black;
 }

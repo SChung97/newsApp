@@ -1,8 +1,13 @@
 import { getAllTopics } from "../api"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { Link } from "react-router-dom"
 import '../App.css'
+import { TopicContext } from "./context/TopicContext"
 
 function Topics() {
+    const {selectedTopic, handleTopic} = useContext(TopicContext)
+   
+
  const [allTopics, setAllTopics] = useState([])
 const [isLoading, setIsLoading] = useState(true)
 const [isError, setIsError] = useState(null)
@@ -22,25 +27,38 @@ useEffect(() => {
     })
 }, [])
 
+const handleTopicSelect = (slug) => {
+    handleTopic(slug)
+}
+
 if (isLoading) {
     return <p>Loading topics</p>
 }
 if (isError) {
     return <p>Error loading topics</p>
 }
+if (!allTopics || allTopics.length === 0) {
+    return <p>No topics to display</p>
+}
+
 return (
     <>
-    <section > 
-        <ul className="topics-list">
+    <nav className='topics-nav' > 
+        <Link to='/' onClick={() => handleTopicClick(null)} className={!selectedTopic ? 'active-link' : 'topic-link'}>
+            <h3>All Articles</h3>
+        </Link>
         {allTopics.map((topic) => {
-            return (<li key={topic.slug}>
+            return (<div key={topic.slug}>
+                <Link to='/' onClick={() => handleTopicSelect(topic.slug)} className={selectedTopic === topic.slug ? 'active-link' : 'topic-link'}>
                 <h3>{topic.slug}</h3>
+                </Link>
                 <p>{topic.description}</p>
                 <img className="topic-img" src={topic.img_url} alt={topic.slug}/>
-            </li>)
+                </div>
+            )
         })}
-        </ul>
-    </section>
+        
+    </nav>
     </>
 )
 }
