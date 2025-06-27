@@ -17,8 +17,8 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path='/topics' element={<Topics />}></Route>
           <Route path='/topics/:topic_slug' element={<FilteredTopics />}></Route>
-          
           <Route path="/articles/:article_id" element={<Article />}></Route>
+          <Route path='/topics/:topic_slug/articles/:article_id' element={<Article />}></Route>
         </Routes>
       </>
 
