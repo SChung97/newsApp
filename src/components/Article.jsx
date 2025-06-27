@@ -35,7 +35,9 @@ console.log('rendering comments')
     }).catch((error) => {
       console.error('Error fetching article, please try again!', error)
       setIsLoading(false)
-      setIsError('Failed, to load article, please try again!')
+      if (error.response && error.response.status === 404) {
+        setIsError('Article not found!')
+      } else { setIsError('Failed to load article, please try again!')}
     });
   }, [article_id]);
 
@@ -75,9 +77,9 @@ console.log('rendering comments')
     return <p>Loading article</p>;
   }
   if (isError) {
-    return <p>Error loading article</p>;
+    return <p>{isError}</p>;
   }
-  if (!article_id) {
+  if (!article) {
     return <p>Article not found!</p>
   }
   

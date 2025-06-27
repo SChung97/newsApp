@@ -4,7 +4,8 @@ import Home from "./components/Home";
 import Topics from "./components/Topics";
 import Article from "./components/Article";
 import FilteredTopics from "./components/FilteredTopics";
-
+import Footer from "./components/Footer";
+import NotFound from './components/NotFound'
 
 function App() {
   
@@ -19,7 +20,9 @@ function App() {
           <Route path='/topics/:topic_slug' element={<FilteredTopics />}></Route>
           <Route path="/articles/:article_id" element={<Article />}></Route>
           <Route path='/topics/:topic_slug/articles/:article_id' element={<Article />}></Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
+        <Footer />
       </>
 
   );

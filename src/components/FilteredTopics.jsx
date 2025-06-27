@@ -20,17 +20,21 @@ function FilteredTopics() {
         setIsError(null)
         setAllArticles([])
 
-        getAllArticles()
+        getAllArticles(topic_slug)
         .then((articlesList) => {
             setAllArticles(articlesList)
             setIsLoading(false)
         })
         .catch((error) => {
-            console.error('Error fetching artiles', error);
+            console.error('Error fetching articles', error);
             setIsLoading(false)
-            setIsError(true)
+            if (error.response && error.response.status === 404) {
+                setIsError('This topic does not exist!')
+            } else {
+                setIsError(`Failed to load articles for ${topic_slug}`)
+            }
         })
-    }, [])
+    }, [topic_slug])
 
     useEffect(() => {
         if (topic_slug && topic_slug !== selectedTopic) {
@@ -46,9 +50,12 @@ function FilteredTopics() {
         return <p>Loading articles for {topic_slug}</p>
     }
     if (isError) {
-        return <p>Error loading articles for {topic_slug}</p>
+        return <p>{isError}</p>
     }
 
+    if (filteredArticles.length === 0) {
+        return <p>This topic doesn't exist!</p>
+    }
     return (
         <>
         <section>
