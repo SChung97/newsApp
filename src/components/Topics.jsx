@@ -24,6 +24,8 @@ useEffect(() => {
         setIsLoading(false)
     }).catch((error) => {
         console.error('Error fetching topics', error)
+        setIsError(true)
+        setIsLoading(false)
     })
 }, [])
 
@@ -49,7 +51,7 @@ return (
         </Link>
         {allTopics.map((topic) => {
             return (<div key={topic.slug}>
-                <Link to='/' onClick={() => handleTopicSelect(topic.slug)} className={selectedTopic === topic.slug ? 'active-link' : 'topic-link'}>
+                <Link to={`/topics/${topic.slug}`} onClick={() => handleTopicSelect(topic.slug)} className={selectedTopic === topic.slug ? 'active-link' : 'topic-link'}>
                 <h3>{topic.slug}</h3>
                 </Link>
                 <p>{topic.description}</p>
