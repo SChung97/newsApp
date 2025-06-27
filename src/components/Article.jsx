@@ -1,21 +1,23 @@
 import { getSingleArticle, getAllComments } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import ArticleVotes from "./ArticleVotes";
 import "../App.css";
 import Comments from "./Comments";
 import AddComment from "./AddComment";
+import { TopicContext } from "./context/TopicContext";
 
 
 function Article() {
-
+const {handleTopic} = useContext(TopicContext)
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([])
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
-  const [loadingComments, setLoadingComments] = useState(true)
-  const [commentsError, setCommentsError] = useState(null)
+
+const [loadingComments, setLoadingComments] = useState(true)
+const [commentsError, setCommentsError] = useState(null)
   const [showCommentsForm, setShowCommentsForm] = useState(false)
 
 console.log('rendering comments')
@@ -83,11 +85,11 @@ console.log('rendering comments')
     <>
       <section className="article-page">
         
-            <ul key={article.article_id}>
+            <div key={article.article_id}>
               <h3>{article.title}</h3>
               <h4><Link to={`/topics/${article.topic}`} onClick={() => handleArticleTopicClick(article.topic)} className="article-topic-link">{article.topic}</Link></h4>
               <p>Author: {article.author}</p>
-              <p>{article.created_at}</p>
+              <p>{new Date(article.created_at).toLocaleDateString()}</p>
               <img
                 className="article_img"
                 src={article.article_img_url}
@@ -100,7 +102,7 @@ console.log('rendering comments')
               <button onClick={handleCommentForm}>{showCommentsForm ? 'Hide' : 'Add your thoughts here!'}</button>
               {showCommentsForm && (<AddComment article_id={article.article_id} onNewComment={handleNewComment}/>)}
               
-            </ul>
+            </div>
           
       </section>
     </>

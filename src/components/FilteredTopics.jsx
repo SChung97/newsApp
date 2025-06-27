@@ -70,7 +70,7 @@ function FilteredTopics() {
 
 <p>Comment count: {article.comment_count}</p>
                 <p>Votes: {article.votes}</p>
-                <p>{article.created_at}</p>
+                <p>{new Date(article.created_at).toLocaleDateString()}</p>
                         </li>
                     )
                 })}

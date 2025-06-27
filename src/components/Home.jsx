@@ -2,21 +2,22 @@ import { getAllArticles } from "../api";
 import { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { TopicContext} from '../components/context/TopicContext'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 
 function Home() {
 
   const {selectedTopic, handleTopic} = useContext(TopicContext)
 
-
-
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [sortedArticles, setSortedArticles] = useState([])
   console.log("rendering all articles");
 
-
+const sortBy = searchParams.get('sort_by') || 'created_at'
+const orderBy = searchParams.get('order_by') || 'desc'
 
   useEffect(() => {
     console.log("all articles useEffect fired");
@@ -34,12 +35,50 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    if(!allArticles) {
+      setSortedArticles([])
+      return
+    }
+const unsortedArticles = [...allArticles]
+
+unsortedArticles.sort((a, b) => {
+  let articleA = a[sortBy]
+  let articleB = b[sortBy]
+
+  if (sortBy === 'created_at') {
+    articleA = new Date(articleA).getTime()
+    articleB = new Date(articleB).getTime()
+  }
+
+  if (articleA < articleB) {
+    return orderBy === 'asc' ? -1 : 1
+  }
+  if (articleA > articleB) {
+    return orderBy === 'asc' ? 1 : -1
+  }
+  return 0
+})
+setSortedArticles(unsortedArticles)
+  }, [allArticles, sortBy, orderBy])
+  
+
+const handleSort = (event) => {
+  const newSearchParams = new URLSearchParams(searchParams)
+  newSearchParams.set('sort_by', event.target.value)
+  setSearchParams(newSearchParams)
+}
+
+const handleOrder = (event) => {
+  const newSearchParams = new URLSearchParams(searchParams)
+  newSearchParams.set('order_by', event.target.value)
+  setSearchParams(newSearchParams)
+}
+
+useEffect(() => {
     if (selectedTopic !== null) {
       handleTopic(null) 
     } 
     }, [selectedTopic,  handleTopic])
-  
-
 
   if (isLoading) {
     return <p>Loading articles</p>;
@@ -53,10 +92,25 @@ function Home() {
 
   return (
     <>
-      <section>
+    <section>
+      <div className='sort-dropdown'>
+        <label htmlFor='sort-by'>Sort by:</label>
+        <select id='sort-by' value={sortBy} onChange={handleSort}>
+          <option value='created_at'>Date</option>
+          <option value='comment_count'>Comment Count</option>
+          <option value='votes'>Votes</option>
+        </select>
 
+        <label htmlFor='order-by'>Order by:</label>
+        <select id='order-by' value={orderBy} onChange={handleOrder}>
+        <option value='desc'>Descending</option>
+        <option value='asc'>Ascending</option>
+        </select>
+      </div>
+    </section>
+      <section>
         <ul className="articles-list">
-          {allArticles.map((article) => {
+          {sortedArticles.map((article) => {
             return (
               <li
                 key={article.article_id}
@@ -75,7 +129,7 @@ function Home() {
                 
                 <p>Comment count: {article.comment_count}</p>
                 <p>Votes: {article.votes}</p>
-                <p>{article.created_at}</p>
+                <p>{new Date(article.created_at).toLocaleDateString()}</p>
               </li>
             );
           })}

@@ -7,6 +7,7 @@ export const getAllArticles = () => {
       return response.json();
     })
     .then(({ articles }) => {
+
       return articles;
     });
 };
