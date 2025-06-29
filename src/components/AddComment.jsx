@@ -7,6 +7,7 @@ function AddComment({article_id, onNewComment}) {
     const [commentBody, setCommentBody] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submissionError, setSubmissionError] = useState(null)
+    const [credentialsError, setCredentialsError] = useState(null)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -27,6 +28,12 @@ function AddComment({article_id, onNewComment}) {
             console.error('Comment can\'t be posted at this time', error)
             setIsSubmitting(false)
             setSubmissionError(error.msg || 'Failed to post comment, please, try again')
+
+            if (error.response.status === 400) {
+                setSubmissionError('Invalid format or missing thoughts')
+            } else if (error.response.status === 404) {
+                setSubmissionError('Please login to post a comment!')
+            }
         })
     }
     return (
@@ -34,7 +41,7 @@ function AddComment({article_id, onNewComment}) {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="commentInput">Your thoughts:</label>
                 <textarea id='commentInput' value={commentBody} onChange={(e) => setCommentBody(e.target.value)}
-                placeholder="Type here..." required disabled={isSubmitting}></textarea>
+                placeholder="Type here..." required disabled={isSubmitting} aria-label='Enter your comment here'></textarea>
             
             <button type='submit' disabled={isSubmitting}>Submit</button>
             {submissionError && <p className="Error-message">{submissionError}</p>}

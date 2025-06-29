@@ -12,6 +12,7 @@ export const getAllArticles = () => {
     });
 };
 
+
 export const getSingleArticle = (article_id) => {
   return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}`)
     .then((response) => {
@@ -24,6 +25,19 @@ export const getSingleArticle = (article_id) => {
       return data.article;
     });
 };
+
+export const getAllUsers = () => {
+  return fetch('https://nc-news-zgkw.onrender.com/api/users')
+  .then((response) => {
+    if (!response.ok) {
+      return Promise.reject('failed to fetch users')
+    }
+    return response.json()
+  })
+  .then(({users}) => {
+    return users
+  })
+}
 
 export const getAllComments = (article_id) => {
   return fetch(`https://nc-news-zgkw.onrender.com/api/articles/${article_id}/comments`)
@@ -105,4 +119,3 @@ export const deleteComment = (comment_id) => {
   })
   }
 
-  
