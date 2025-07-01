@@ -1,35 +1,49 @@
+import { useContext } from "react";
+import "../App.css";
+import CommentCard from "./CommentCard";
+import { UserContext } from "./context/UserContext";
 
-import '../App.css'
-import CommentCard from './CommentCard';
-function Comments({comments, loadingComments, commentsError, currentUser, setComments}) {
-    console.log('CommentsList rendering.'); 
-    console.log('comments prop', comments)
-console.log(currentUser)
+function Comments({ comments, loadingComments, commentsError, setComments }) {
+  const { loggedInUser } = useContext(UserContext);
+  console.log("CommentsList rendering.");
+  console.log("comments prop", comments);
+  console.log("userContext", loggedInUser);
+  const handleDeleteComment = (commentIdToRemove) => {
+    setComments((currentComments) =>
+      currentComments.filter(
+        (comment) => comment.comment_id !== commentIdToRemove
+      )
+    );
+  };
 
-const handleDeleteComment = (commentIdToRemove) => {
-    setComments((currentComments) => currentComments.filter((comment) => comment.comment_id !== commentIdToRemove))
-}
+  if (loadingComments) {
+    return <p>Loading comments</p>;
+  }
+  if (commentsError) {
+    return <p>Error loading comments</p>;
+  }
 
- if (loadingComments) {
-    return <p>Loading comments</p>
- }
- if(commentsError) {
-    return <p>Error loading comments</p>
- }
+  if (!comments || comments.length === 0) {
+    return <p>No comments to display, add your thoughts!</p>;
+  }
 
-if (!comments || comments.length===0) {
-    return <p>No comments to display, add your thoughts!</p>
-}
-
-return (<section className='comments-section'>
-    <h4>All Comments</h4>
-    <ul className='comments-list'>
+  return (
+    <section className="comments-section">
+      <h4>All Comments</h4>
+      <ul className="comments-list">
         {comments.map((comment) => {
-           return(<CommentCard key={comment.comment_id} comment={comment} currentUser={currentUser} deleteSuccess={handleDeleteComment} />) 
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              currentUser={loggedInUser}
+              deleteSuccess={handleDeleteComment}
+            />
+          );
         })}
-    </ul>
-</section>)
-    
+      </ul>
+    </section>
+  );
 }
 
-export default Comments
+export default Comments;
