@@ -35,6 +35,32 @@
   list-style: none;
 }
 
+.article-list-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.homepage-date {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 105px;
+  margin-right: 105px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+.article-list-text h3,
+.article-list-text p {
+  margin: 0;
+  padding-left: 105px;
+}
+
 .article-title-link {
   text-decoration: none;
   color: black;
@@ -48,6 +74,19 @@
 
 .article-page {
   list-style: none;
+  padding-left: 100px;
+}
+
+.article_img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin-top: 15px;
+  margin-left: 7px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  padding-left: 100px;
 }
 
 .comments-list {
@@ -98,4 +137,17 @@
 
 .users-list {
   list-style: none;
+}
+
+.sort-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  padding-left: 110px;
+  text-align: left;
+}
+
+.footer {
+  margin-left: 105px;
 }

@@ -110,31 +110,35 @@ function Home() {
           {sortedArticles.map((article) => {
             return (
               <li key={article.article_id} className="article-list-item">
-                <Link
-                  to={`/articles/${article.article_id}`}
-                  className="article-title-link"
-                >
-                  <h3>{article.title}</h3>
-                </Link>
-                <p>
+                <div className="article-list-text">
                   <Link
-                    to={`/topics/${article.topic}`}
-                    className="home-topic-link"
+                    to={`/articles/${article.article_id}`}
+                    className="article-title-link"
                   >
-                    {article.topic}{" "}
+                    <h3>{article.title}</h3>
                   </Link>
+                  <p>
+                    <Link
+                      to={`/topics/${article.topic}`}
+                      className="home-topic-link"
+                    >
+                      {article.topic}{" "}
+                    </Link>
+                  </p>
+
+                  <p>{article.author}</p>
+                  <img
+                    className="article_img"
+                    src={article.article_img_url}
+                    alt={article.title}
+                  />
+
+                  <p>Comment count: {article.comment_count}</p>
+                  <p>Votes: {article.votes}</p>
+                </div>
+                <p className="homepage-date">
+                  {new Date(article.created_at).toLocaleDateString()}
                 </p>
-
-                <p>{article.author}</p>
-                <img
-                  className="article_img"
-                  src={article.article_img_url}
-                  alt={article.title}
-                />
-
-                <p>Comment count: {article.comment_count}</p>
-                <p>Votes: {article.votes}</p>
-                <p>{new Date(article.created_at).toLocaleDateString()}</p>
               </li>
             );
           })}

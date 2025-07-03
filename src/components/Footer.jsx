@@ -1,7 +1,9 @@
 function Footer() {
-    return <footer>
-
+  return (
+    <footer className="footer">
+      <p>© Northcoders</p>
     </footer>
+  );
 }
 
-export default Footer
+export default Footer;
