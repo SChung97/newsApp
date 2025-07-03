@@ -1,11 +1,34 @@
 .title-link-to-home {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.title-link-to-home:hover {
+  color: #444;
 }
 
 .link-to-topics {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link-to-topics:hover {
+  color: #444;
+}
+
+.link-to-users {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link-to-users:hover {
+  color: #444;
 }
 
 .articles-list {
@@ -15,6 +38,12 @@
 .article-title-link {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.article-title-link:hover {
+  color: #444;
 }
 
 .article-page {
@@ -37,15 +66,34 @@
 .topic-link {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.topic-link:hover {
+  color: #444;
 }
 
 .article-topic-link {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
+.article-topic-link:hover {
+  color: #444;
+}
+
 .home-topic-link {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.home-topic-link:hover {
+  color: #444;
 }
 
 .users-list {
