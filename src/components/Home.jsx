@@ -135,10 +135,11 @@ function Home() {
 
                   <p>Comment count: {article.comment_count}</p>
                   <p>Votes: {article.votes}</p>
+
+                  <p className="homepage-date">
+                    {new Date(article.created_at).toLocaleDateString()}
+                  </p>
                 </div>
-                <p className="homepage-date">
-                  {new Date(article.created_at).toLocaleDateString()}
-                </p>
               </li>
             );
           })}
