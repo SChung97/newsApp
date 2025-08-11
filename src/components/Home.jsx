@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { TopicContext } from "../components/context/TopicContext";
 import { Link, useSearchParams } from "react-router-dom";
+import { Select, MenuItem } from "@mui/material";
 
 function Home() {
   const { selectedTopic, handleTopic } = useContext(TopicContext);
@@ -92,17 +93,29 @@ function Home() {
       <section>
         <div className="sort-dropdown">
           <label htmlFor="sort-by">Sort by:</label>
-          <select id="sort-by" value={sortBy} onChange={handleSort}>
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
-          </select>
+          <Select
+            id="sort-by"
+            value={sortBy}
+            onChange={handleSort}
+            sx={{ m: 1, minWidth: 120 }}
+            size="small"
+          >
+            <MenuItem value="created_at">Date</MenuItem>
+            <MenuItem value="comment_count">Comment Count</MenuItem>
+            <MenuItem value="votes">Votes</MenuItem>
+          </Select>
 
           <label htmlFor="order-by">Order by:</label>
-          <select id="order-by" value={orderBy} onChange={handleOrder}>
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-          </select>
+          <Select
+            id="order-by"
+            value={orderBy}
+            onChange={handleOrder}
+            sx={{ m: 1, minWidth: 120 }}
+            size="small"
+          >
+            <MenuItem value="desc">Descending</MenuItem>
+            <MenuItem value="asc">Ascending</MenuItem>
+          </Select>
         </div>
       </section>
       <section>
