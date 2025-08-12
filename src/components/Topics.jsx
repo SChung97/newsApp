@@ -54,6 +54,8 @@ function Topics() {
         >
           <h1>All Articles</h1>
         </Link>
+      </nav>
+      <div className="topics-container">
         {allTopics.map((topic) => {
           return (
             <div key={topic.slug} className="topics-page">
@@ -71,7 +73,7 @@ function Topics() {
             </div>
           );
         })}
-      </nav>
+      </div>
     </>
   );
 }
