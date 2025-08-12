@@ -52,11 +52,11 @@ function Topics() {
           onClick={() => handleTopicClick(null)}
           className={!selectedTopic ? "active-link" : "topic-link"}
         >
-          <h3>All Articles</h3>
+          <h1>All Articles</h1>
         </Link>
         {allTopics.map((topic) => {
           return (
-            <div key={topic.slug}>
+            <div key={topic.slug} className="topics-page">
               <Link
                 to={`/topics/${topic.slug}`}
                 onClick={() => handleTopicSelect(topic.slug)}
@@ -64,7 +64,7 @@ function Topics() {
                   selectedTopic === topic.slug ? "active-link" : "topic-link"
                 }
               >
-                <h4>{topic.slug}</h4>
+                <h2>{topic.slug}</h2>
               </Link>
               <p>{topic.description}</p>
               <img className="topic-img" src={topic.img_url} alt={topic.slug} />
