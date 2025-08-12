@@ -147,6 +147,18 @@
   text-align: left;
 }
 
+.topics-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin: 30px auto;
+  width: 90%;
+}
+
 .topic-img {
   width: 80%;
   max-width: 800px;
@@ -157,6 +169,7 @@
   margin-right: auto;
   margin-bottom: 15px;
 }
+
 .footer {
   margin-left: 126px;
 }
