@@ -3,7 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { TopicContext } from "../components/context/TopicContext";
 import { Link, useSearchParams } from "react-router-dom";
-import { Select, MenuItem, CircularProgress, Box } from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
+import Loading from "./Loading";
 
 function Home() {
   const { selectedTopic, handleTopic } = useContext(TopicContext);
@@ -79,27 +80,7 @@ function Home() {
   }, [selectedTopic, handleTopic]);
 
   if (isLoading) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <CircularProgress />
-          <p>Loading articles</p>
-        </Box>
-      </Box>
-    );
+    return <Loading />;
   }
   if (isError) {
     return <p>Error loading articles</p>;

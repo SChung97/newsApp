@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext";
+import Loading from "./Loading";
 
 function Users() {
   const { users, loadingUsers, userError, loggedInUser, setLoggedInUser } =
     useContext(UserContext);
 
   if (loadingUsers) {
-    return <p>Loading users</p>;
+    return <Loading />;
   }
 
   if (userError) {

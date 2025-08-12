@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "../App.css";
 import CommentCard from "./CommentCard";
 import { UserContext } from "./context/UserContext";
+import Loading from "./Loading";
 
 function Comments({ comments, loadingComments, commentsError, setComments }) {
   const { loggedInUser } = useContext(UserContext);
@@ -17,7 +18,7 @@ function Comments({ comments, loadingComments, commentsError, setComments }) {
   };
 
   if (loadingComments) {
-    return <p>Loading comments</p>;
+    return <Loading />;
   }
   if (commentsError) {
     return <p>Error loading comments</p>;

@@ -6,6 +6,7 @@ import "../App.css";
 import Comments from "./Comments";
 import AddComment from "./AddComment";
 import { TopicContext } from "./context/TopicContext";
+import Loading from "./Loading";
 
 function Article() {
   const { handleTopic } = useContext(TopicContext);
@@ -77,7 +78,7 @@ function Article() {
   };
 
   if (isLoading) {
-    return <p>Loading article</p>;
+    return <Loading />;
   }
   if (isError) {
     return <p>{isError}</p>;

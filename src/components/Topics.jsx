@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import { TopicContext } from "./context/TopicContext";
+import Loading from "./Loading";
 
 function Topics() {
   const { selectedTopic, handleTopic } = useContext(TopicContext);
@@ -34,7 +35,7 @@ function Topics() {
   };
 
   if (isLoading) {
-    return <p>Loading topics</p>;
+    return <Loading />;
   }
   if (isError) {
     return <p>Error loading topics</p>;
