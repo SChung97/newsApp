@@ -142,7 +142,8 @@
   justify-content: center;
   gap: 20px;
   padding: 0px;
-  margin: 0px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .user-card {
@@ -154,8 +155,8 @@
   border: 2px solid #e0e0e0;
   box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
   padding: 15px;
-  margin: 0 auto 50px auto;
   width: 200px;
+  margin-bottom: 20px;
 }
 
 .user-img {
@@ -163,6 +164,12 @@
   height: 150px;
   object-fit: contain;
   display: block;
+}
+
+.user-info {
+  margin-top: 100px;
+
+  text-align: center;
 }
 
 .sort-dropdown {
@@ -218,5 +225,10 @@
 }
 
 .footer {
-  margin-left: 126px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 50px;
+  max-height: 50px;
 }

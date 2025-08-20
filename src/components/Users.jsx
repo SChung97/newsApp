@@ -18,9 +18,11 @@ function Users() {
     <>
       <section>
         {loggedInUser ? (
-          <p>You are now logged in as {loggedInUser.username}</p>
+          <p className="user-info">
+            You are now logged in as {loggedInUser.username}
+          </p>
         ) : (
-          <p>Click an avatar to log in!</p>
+          <p className="user-info">Click an avatar to log in!</p>
         )}
         <ul className="users-list">
           {users.map((user) => {
