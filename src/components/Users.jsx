@@ -25,7 +25,7 @@ function Users() {
         <ul className="users-list">
           {users.map((user) => {
             return (
-              <li key={user.username}>
+              <li key={user.username} className="user-card">
                 <h3>{user.username}</h3>
                 <img
                   className="user-img"
