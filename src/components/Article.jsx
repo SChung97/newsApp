@@ -7,7 +7,7 @@ import Comments from "./Comments";
 import AddComment from "./AddComment";
 import { TopicContext } from "./context/TopicContext";
 import Loading from "./Loading";
-
+import { Button } from "@mui/material";
 
 function Article() {
   const { handleTopic } = useContext(TopicContext);
@@ -122,9 +122,9 @@ function Article() {
             commentsError={commentsError}
             setComments={setComments}
           />
-          <button onClick={handleCommentForm}>
-            {showCommentsForm ? "Hide" : "Add your thoughts here!"}
-          </button>
+          <Button className="comment-button" variant="outlined" size="small" onClick={handleCommentForm}>
+            {showCommentsForm ? "Hide" : "Add your thoughts here"}
+          </Button>
           {showCommentsForm && (
             <AddComment
               article_id={article.article_id}
