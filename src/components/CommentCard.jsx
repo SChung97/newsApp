@@ -44,7 +44,7 @@ function CommentCard({ comment, currentUser, deleteSuccess }) {
         <p>Votes: {comment.votes}</p>
 
         {canDelete && (
-          <Button variant="outlined" size="small" startIcon={<DeleteIcon />} onClick={handleDelete} disabled={isDeleting}>
+          <Button className="delete-button" variant="outlined" size="small" startIcon={<DeleteIcon />} color="black" onClick={handleDelete} disabled={isDeleting}>
             Delete
           </Button>
         )}

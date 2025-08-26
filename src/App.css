@@ -9,6 +9,22 @@
   color: #444;
 }
 
+.votes-button:hover {
+  color: #444;
+}
+
+.delete-button:hover {
+  color: #444;
+}
+
+.comment-button:hover {
+  color: #444;
+}
+
+.submit-button:hover {
+  color: #444;
+}
+
 .link-to-topics {
   text-decoration: none;
   color: black;

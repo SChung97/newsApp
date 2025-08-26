@@ -122,7 +122,7 @@ function Article() {
             commentsError={commentsError}
             setComments={setComments}
           />
-          <Button className="comment-button" variant="outlined" size="small" onClick={handleCommentForm}>
+          <Button className="comment-button" variant="outlined" size="small" color="black" onClick={handleCommentForm}>
             {showCommentsForm ? "Hide" : "Add your thoughts here"}
           </Button>
           {showCommentsForm && (

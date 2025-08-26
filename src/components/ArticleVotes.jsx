@@ -42,8 +42,8 @@ return (
     <>
     <section className="article-votes-container">
         <p>Votes: {votes}</p>
-        <Button variant="outlined" size="small" className='votes-button' startIcon={<ThumbUpIcon />}onClick={() => handleVote(1)} disabled={userVote === -1}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</Button> {" "}
-        <Button variant="outlined" size="small" className="votes-button" startIcon={<ThumbDownIcon />} onClick={() => handleVote(-1)} disabled={userVote === 1}>
+        <Button variant="outlined" size="small" className='votes-button' startIcon={<ThumbUpIcon />} color="black" onClick={() => handleVote(1)} disabled={userVote === -1}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</Button> {" "}
+        <Button variant="outlined" size="small" className="votes-button" color="black" startIcon={<ThumbDownIcon />} onClick={() => handleVote(-1)} disabled={userVote === 1}>
             {userVote === -1 ? 'Downvoted' : 'Downvote'}
         </Button>
     </section>

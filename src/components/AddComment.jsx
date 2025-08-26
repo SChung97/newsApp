@@ -1,6 +1,9 @@
 import { makeComment } from "../api";
 import { useContext, useState } from "react";
 import { UserContext } from "./context/UserContext";
+import { Button } from "@mui/material";
+import "../App.css";
+import SendIcon from "@mui/icons-material/Send";
 
 function AddComment({ article_id, onNewComment }) {
   const { loggedInUser } = useContext(UserContext);
@@ -52,7 +55,7 @@ function AddComment({ article_id, onNewComment }) {
   return (
     <section className="add-comment-container">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="commentInput">Your thoughts:</label>
+        <label htmlFor="commentInput">Your thoughts:</label> {" "}
         <textarea
           id="commentInput"
           value={commentBody}
@@ -61,11 +64,11 @@ function AddComment({ article_id, onNewComment }) {
           required
           disabled={isSubmitting}
           aria-label="Enter your comment here"
-        ></textarea>
+        ></textarea> {" "}
 
-        <button type="submit" disabled={isSubmitting}>
+        <Button className="submit-button" color="black" variant="outlined" size="small" type="submit" endIcon={<SendIcon />} disabled={isSubmitting}>
           Submit
-        </button>
+        </Button>
         {submissionError && <p className="Error-message">{submissionError}</p>}
       </form>
     </section>
