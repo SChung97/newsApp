@@ -1,7 +1,8 @@
 
 import { patchArticleVotes } from "../api"
 import { useState } from "react"
-import { Box, Button } from "@mui/material"
+import { Button } from "@mui/material"
+import "../App.css"
 
 function ArticleVotes({article_id, initialVotes}) {
 
@@ -39,7 +40,7 @@ return (
     <>
     <section className="article-votes-container">
         <p>Votes: {votes}</p>
-        <Button variant="outlined" size="small" className='votes-button' onClick={() => handleVote(1)} disabled={userVote === -1}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</Button>
+        <Button variant="outlined" size="small" className='votes-button' onClick={() => handleVote(1)} disabled={userVote === -1}>{userVote === 1 ? 'Upvoted' : 'Upvote'}</Button> {" "}
         <Button variant="outlined" size="small" className="votes-button" onClick={() => handleVote(-1)} disabled={userVote === 1}>
             {userVote === -1 ? 'Downvoted' : 'Downvote'}
         </Button>

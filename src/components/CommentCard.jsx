@@ -1,5 +1,6 @@
 import { deleteComment } from "../api";
 import { useState } from "react";
+import { Button } from "@mui/material";
 
 function CommentCard({ comment, currentUser, deleteSuccess }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -42,9 +43,9 @@ function CommentCard({ comment, currentUser, deleteSuccess }) {
         <p>Votes: {comment.votes}</p>
 
         {canDelete && (
-          <button onClick={handleDelete} disabled={isDeleting}>
+          <Button variant="outlined" size="small" onClick={handleDelete} disabled={isDeleting}>
             Delete
-          </button>
+          </Button>
         )}
         {deleteError && <p>{deleteError}</p>}
       </li>
