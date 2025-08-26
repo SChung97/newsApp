@@ -8,6 +8,7 @@ import AddComment from "./AddComment";
 import { TopicContext } from "./context/TopicContext";
 import Loading from "./Loading";
 
+
 function Article() {
   const { handleTopic } = useContext(TopicContext);
   const { article_id } = useParams();
