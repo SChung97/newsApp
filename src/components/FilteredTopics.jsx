@@ -66,7 +66,7 @@ function FilteredTopics() {
         <ul className="articles-list">
           {filteredArticles.map((article) => {
             return (
-              <li key={article.article_id} className="article-list-item">
+              <li key={article.article_id} className="article-list-text">
                 <Link
                   to={`articles/${article.article_id}`}
                   className="article-title-link"
