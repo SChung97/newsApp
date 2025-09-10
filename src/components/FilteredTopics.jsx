@@ -62,7 +62,7 @@ function FilteredTopics() {
   return (
     <>
       <section>
-        <h2>Articles about {topic_slug}</h2>
+        <h2 className="filtered-articles-header">Articles about {topic_slug}</h2>
         <ul className="articles-list">
           {filteredArticles.map((article) => {
             return (
