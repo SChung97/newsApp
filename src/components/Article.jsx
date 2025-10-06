@@ -102,8 +102,8 @@ function Article() {
               {article.topic}
             </Link>
           </h4>
-          <p>Author: {article.author}</p>
-          <p>{new Date(article.created_at).toLocaleDateString()}</p>
+          <p className="article-info">Author: {article.author}</p>
+          <p className="article-info">{new Date(article.created_at).toLocaleDateString()}</p>
           <img
             className="article_img"
             src={article.article_img_url}
