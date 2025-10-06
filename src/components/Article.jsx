@@ -105,16 +105,16 @@ function Article() {
           <p className="article-info">Author: {article.author}</p>
           <p className="article-info">{new Date(article.created_at).toLocaleDateString()}</p>
           <img
-            className="article_img"
+            className="article-card-img"
             src={article.article_img_url}
             alt={article.title}
           />
-          <p>{article.body}</p>
-          <ArticleVotes
+          <p className="article-text">{article.body}</p>
+          <ArticleVotes 
             article_id={article.article_id}
             initialVotes={article.votes}
           />
-          <p>Comment count: {article.comment_count}</p>
+          <p className="comment-counter">Comment count: {article.comment_count}</p>
           <Comments
             comments={comments}
             currentUser={currentUser}
@@ -122,7 +122,7 @@ function Article() {
             commentsError={commentsError}
             setComments={setComments}
           />
-          <Button className="comment-button" variant="outlined" size="small" color="black" onClick={handleCommentForm}>
+          <Button variant="outlined" size="small" color="black" onClick={handleCommentForm}>
             {showCommentsForm ? "Hide" : "Add your thoughts here"}
           </Button>
           {showCommentsForm && (

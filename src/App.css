@@ -260,4 +260,43 @@
 .article-info {
   margin-left: 50px;
   line-height: 0.5;
+  font-size: small;
+  font-weight:500;
+}
+
+.article-card-img {
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+.article-text {
+  text-align: left;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.voting-block {
+  margin-left: 50px;
+}
+
+.article-votes-container {
+  margin-left: 50px;
+}
+
+.comments-section {
+  margin-left: 50px;
+}
+
+.comment-counter {
+  margin-left: 50px;
+}
+
+.comment-button {
+  margin-left: 50px;
 }
