@@ -122,7 +122,8 @@ function Article() {
             commentsError={commentsError}
             setComments={setComments}
           />
-          <Button variant="outlined" size="small" color="black" onClick={handleCommentForm}>
+          <Button sx={{marginLeft: 11, marginTop: 2, marginBottom: 4
+          }} variant="outlined" size="small" color="black" onClick={handleCommentForm}>
             {showCommentsForm ? "Hide" : "Add your thoughts here"}
           </Button>
           {showCommentsForm && (
