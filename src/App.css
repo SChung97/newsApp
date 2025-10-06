@@ -297,6 +297,17 @@
   margin-left: 50px;
 }
 
-.comment-button {
-  margin-left: 50px;
+.comment-card h5 {
+  margin-bottom: 0;
+  font-size: medium;
+}
+
+.comment-card-date {
+  font-size: small;
+  line-height: 0;
+  padding-bottom: 5px;
+}
+
+.add-comment-container {
+  margin-left: 86px
 }

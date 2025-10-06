@@ -39,7 +39,7 @@ function CommentCard({ comment, currentUser, deleteSuccess }) {
     <>
       <li className="comment-card">
         <h5>{comment.author}</h5>
-        <p>{comment.created_at}</p>
+        <p className="comment-card-date">{comment.created_at}</p>
         <p>{comment.body}</p>
         <p>Votes: {comment.votes}</p>
 
