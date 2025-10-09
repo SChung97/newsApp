@@ -1,7 +1,7 @@
 import { makeComment } from "../api";
 import { useContext, useState } from "react";
 import { UserContext } from "./context/UserContext";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import "../App.css";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -66,7 +66,7 @@ function AddComment({ article_id, onNewComment }) {
           aria-label="Enter your comment here"
         ></textarea> {" "}
 
-        <Button className="submit-button" color="black" variant="outlined" size="small" type="submit" endIcon={<SendIcon />} disabled={isSubmitting}>
+        <Button className="submit-button" color="black" sx={{margin: 5}} variant="outlined" size="small" type="submit" endIcon={<SendIcon />} disabled={isSubmitting}>
           Submit
         </Button>
         {submissionError && <p className="Error-message">{submissionError}</p>}
