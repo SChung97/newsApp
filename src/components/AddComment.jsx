@@ -1,7 +1,7 @@
 import { makeComment } from "../api";
 import { useContext, useState } from "react";
 import { UserContext } from "./context/UserContext";
-import { Button, Grid } from "@mui/material";
+import { Button} from "@mui/material";
 import "../App.css";
 import SendIcon from "@mui/icons-material/Send";
 
